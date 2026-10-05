@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONLINE A/L MEDIA ACADEMY</title>
+    <style>
+        :root {
+            --primary-color: #e63946;
+            --primary-dark: #b01c29;
+            --secondary-color: #2ec4b6;
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-sub: #94a3b8;
+            --border-color: #334155;
+            --whatsapp-green: #25D366;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            user-select: none;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: var(--text-main);
+        }
+
+        .marquee-container {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 10px 0;
+            font-weight: 600;
+            font-size: 0.95rem;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 18s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-100%, 0); }
+        }
+
+        .marquee-content span { margin-right: 50px; }
+
+        .main-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 20px;
+        }
+
+        .academy-header { text-align: center; margin-bottom: 25px; }
+        .academy-header h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-transform: uppercase;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
+            width: 100%;
+            max-width: 850px;
+            margin-bottom: 20px;
+        }
+
+        .card-title { font-size: 1.4rem; margin-bottom: 15px; text-align: center; font-weight: 700; }
+        
+        .rules-box {
+            background: #0f172a;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            font-size: 0.88rem;
+            color: var(--text-sub);
+            line-height: 1.6;
+        }
+
+        .rules-box h4 {
+            color: #f1c40f;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .rules-box ul { padding-left: 20px; }
+        .rules-box li { margin-bottom: 6px; }
+
+        .agree-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+
+        .agree-container input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .input-group { margin-bottom: 15px; }
+        .input-group label { display: block; margin-bottom: 6px; font-size: 0.85rem; color: var(--text-sub); }
+        .input-group input, .input-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: #0f172a;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: #ffffff;
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        .input-group input:focus, .input-group textarea:focus { border-color: var(--secondary-color); }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary-color);
+            border: none;
+            border-radius: 6px;
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 5px;
+            transition: background 0.2s ease;
+        }
+
+        .btn:hover { background: var(--primary-dark); }
+        .btn:disabled { background: #475569; cursor: not-allowed; }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-sub);
+        }
+
+        .btn-secondary:hover { background: rgba(255, 255, 255, 0.05); color: #fff; }
+
+        .btn-green { background: var(--secondary-color); color: #000; font-weight: bold; }
+        .btn-green:hover { background: #26a99d; }
+
+        .btn-action { padding: 6px 12px; font-size: 0.8rem; border-radius: 4px; border: none; cursor: pointer; font-weight: bold; }
+        .btn-block { background-color: var(--primary-color); color: white; }
+        .btn-unblock { background-color: var(--secondary-color); color: black; }
+
+        .notice-box {
+            background: rgba(241, 196, 15, 0.1);
+            border-left: 4px solid #f1c40f;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .trial-box {
+            background: rgba(46, 196, 182, 0.1);
+            border: 1px solid var(--secondary-color);
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .bank-details-box {
+            background: #0f172a;
+            border: 1px dashed var(--border-color);
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .hub-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .hub-card {
+            background: #0f172a;
+            padding: 18px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .timer-box { font-size: 1.2rem; font-weight: bold; color: #f1c40f; text-align: right; margin-bottom: 15px; }
+
+        .question-block {
+            background: #0f172a;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            text-align: left;
+            border: 1px solid var(--border-color);
+        }
+
+        .question-block label { display: block; margin: 8px 0; cursor: pointer; font-size: 0.9rem; }
+
+        .table-container { overflow-x: auto; margin-top: 15px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: left; }
+        th, td { padding: 10px; border-bottom: 1px solid var(--border-color); }
+        th { background-color: rgba(230, 57, 70, 0.2); color: #fff; }
+
+        .tab-buttons { display: flex; gap: 10px; margin-bottom: 20px; }
+        .tab-btn { flex: 1; padding: 10px; background: #0f172a; border: 1px solid var(--border-color); color: var(--text-sub); border-radius: 6px; cursor: pointer; font-weight: bold; }
+        .tab-btn.active { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
+
+        #student-portal, #admin-section, #exam-section, #pdf-section, #essay-section, #password-change-card { display: none; }
+
+        .footer { text-align: center; padding: 15px; font-size: 0.8rem; color: var(--text-sub); }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+
+    <div class="marquee-container">
+        <div class="marquee-content">
+            <span>📞 තාක්ෂණික උපදෙස් සඳහා: 076 112 7924</span>
+            <span>👨‍🏫 ගුරුවරයා හා සම්බන්ධ වීමට: 074 224 1435</span>
+            <span>📞 තාක්ෂණික උපදෙස් සඳහා: 076 112 7924</span>
+            <span>👨‍🏫 ගුරුවරයා හා සම්බන්ධ වීමට: 074 224 1435</span>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="academy-header">
+            <h1>Online A/L Media Academy</h1>
+            <p style="color: var(--text-sub);">උසස් පෙළ සන්නිවේදනය හා මාධ්‍ය අධ්‍යයනය</p>
+        </div>
+
+        <!-- 1. Student Auth Card (Register or Login) -->
+        <div class="card" id="student-login-card" style="max-width:500px;">
+            
+            <div class="tab-buttons">
+                <button class="tab-btn active" id="tab-reg-btn" onclick="switchTab('register')">1. ලියාපදිංචි වීම (Register)</button>
+                <button class="tab-btn" id="tab-login-btn" onclick="switchTab('login')">2. ඇතුළු වීම (Login)</button>
+            </div>
+
+            <div class="rules-box">
+                <h4>📌 පද්ධතිය භාවිතා කිරීමේ උපදෙස් සහ කොන්දේසි:</h4>
+                <ul>
+                    <li>ලියාපදිංචි වූ පසු ඔබට <strong>පළමු පැය 48 නොමිලේ (Free Trial)</strong> හිමිවේ.</li>
+                    <li>ඔබේ WhatsApp අංකයට පැමිණෙන Login ID සහ Password වෙනත් අයෙකුට ලබා දීම තහනම්ය.</li>
+                    <li>එක් Login ID එකකින් එකවර ඇතුළු විය හැක්කේ එක Phone/PC එකකින් පමණි.</li>
+                </ul>
+            </div>
+
+            <!-- Tab 1: Registration Form -->
+            <div id="register-section">
+                <form id="register-form">
+                    <div class="input-group">
+                        <label>සම්පූර්ණ නම (Full Name)</label>
+                        <input type="text" id="reg-name" placeholder="උදා: කසුන් පෙරේරා" required>
+                    </div>
+                    <div class="input-group">
+                        <label>WhatsApp දුරකථන අංකය</label>
+                        <input type="text" id="reg-phone" placeholder="උදා: 0771234567" required>
+                    </div>
+
+                    <div class="agree-container">
+                        <input type="checkbox" id="agree-check-reg" onchange="toggleRegButton()">
+                        <label for="agree-check-reg">මම ඉහත උපදෙස් සහ කොන්දේසි වලට එකඟ වෙමි.</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-green" id="reg-submit-btn" disabled>ගිණුමක් සාදා WhatsApp වෙත යවන්න 📲</button>
+                </form>
+            </div>
+
+            <!-- Tab 2: Existing User Login Form -->
+            <div id="login-section" style="display:none;">
+                <form id="student-form">
+                    <div class="input-group">
+                        <label>ලොගින් අංකය (Student Login ID)</label>
+                        <input type="text" id="student-id" placeholder="උදා: MED101" required>
+                    </div>
+                    <div class="input-group">
+                        <label>මුරපදය (Password)</label>
+                        <input type="password" id="student-pass" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn">ඇතුල් වන්න</button>
+                </form>
+            </div>
+
+            <button class="btn btn-secondary" onclick="showAdminAuth()" style="margin-top:20px;">🔑 Admin Panel Access</button>
+        </div>
+
+        <!-- First-Time Password Change Modal -->
+        <div class="card" id="password-change-card" style="max-width:480px;">
+            <h2 class="card-title" style="color:#f1c40f;">🔒 රහස්පදය වෙනස් කරන්න</h2>
+            <p style="font-size:0.85rem; color:var(--text-sub); text-align:center; margin-bottom:15px;">
+                ඔබගේ ගිණුමේ ආරක්ෂාව තහවුරු කිරීම සඳහා කරුණාකර අලුත් රහස්පදයක් (New Password) සකස් කරගන්න.
+            </p>
+            <form id="pw-change-form">
+                <div class="input-group">
+                    <label>අලුත් මුරපදය (New Password)</label>
+                    <input type="password" id="new-pw" placeholder="••••••••" required minlength="6">
+                </div>
+                <div class="input-group">
+                    <label>අලුත් මුරපදය නැවත ඇතුළත් කරන්න</label>
+                    <input type="password" id="confirm-pw" placeholder="••••••••" required minlength="6">
+                </div>
+                <button type="submit" class="btn btn-green">නව මුරපදය සුරකින්න</button>
+            </form>
+        </div>
+
+        <!-- 2. Student Portal Hub -->
+        <div class="card" id="student-portal">
+            <h2 class="card-title">සාදරයෙන් පිළිගනිමු! (<span id="logged-user-name" style="color:var(--secondary-color);">-</span>)</h2>
+            <p style="text-align:center; font-size:0.85rem; color:var(--text-sub); margin-top:-10px; margin-bottom:15px;">Student ID: <span id="logged-user-id"></span></p>
+
+            <div class="trial-box" id="trial-status-bar">
+                ⏱️ Free Trial Status: Active
+            </div>
+
+            <div class="notice-box">
+                <h4 style="color: #f1c40f;">📢 විශේෂ නිවේදනය</h4>
+                <p id="display-notice">තවමත් විශේෂ නිවේදන කිසිවක් පළ කර නොමැත.</p>
+            </div>
+
+            <div class="hub-grid">
+                <div class="hub-card">
+                    <h3>🎥 Live Zoom Class</h3>
+                    <p style="font-size:0.8rem; margin:10px 0; color:var(--text-sub);">සෑම සතියකම සජීවී පන්තියට සම්බන්ධ වීමට පහත බටන් එක ක්ලික් කරන්න.</p>
+                    <a id="zoom-link-btn" href="#" target="_blank" style="text-decoration:none;">
+                        <button class="btn btn-green" style="font-size:0.85rem;">ලඟදීම</button>
+                    </a>
+                </div>
+
+                <div class="hub-card">
+                    <h3>🎬 Class Recordings</h3>
+                    <p style="font-size:0.8rem; margin:10px 0; color:var(--text-sub);">පසුගිය වීඩියෝ නැරඹීමට.</p>
+                    <button class="btn btn-secondary" onclick="alert('Recordings Displaying...')">වීඩියෝ බලන්න</button>
+                </div>
+
+                <div class="hub-card">
+                    <h3>💳 Bank Deposit / Slip Upload</h3>
+                    <div class="bank-details-box">
+                        🏦 <strong>Commercial Bank (කමර්ෂල් බැංකුව)</strong><br>
+                        📍 ශාඛාව: <strong>ගම්පහ (Gampaha)</strong><br>
+                        🔢 ගිණුම් අංකය: <strong>8003879999</strong><br>
+                        💰 පන්ති ගාස්තුව: <strong>Rs. 500.00</strong>
+                    </div>
+                    <p style="font-size:0.75rem; color:var(--text-sub); margin-bottom:5px;">පැය 48 Free Trial එකෙන් පසුව සේවාව දීර්ඝ කිරීමට රු. 500 තැන්පත් කළ Bank Slip එක Upload කරන්න.</p>
+                    <input type="file" id="slip-file" accept="image/*" style="margin-top:5px; font-size:0.8rem;">
+                    <button class="btn" style="padding:8px; font-size:0.8rem; margin-top:8px;" onclick="uploadSlipAuto()">Auto-Verify & Unlock Full Access</button>
+                    <div id="ocr-status" style="margin-top:8px; font-size:0.8rem; font-weight:bold;"></div>
+                </div>
+            </div>
+
+            <div style="margin-top:20px; background:rgba(230,57,70,0.1); padding:20px; border-radius:8px; border: 1px solid rgba(230,57,70,0.3);">
+                <h3>📚 අධ්‍යයන කොටස් සහ ප්‍රශ්න පත්‍ර (Study Material & Papers)</h3>
+                <p style="font-size:0.85rem; margin-top:5px; color:var(--text-sub);">අවශ්‍ය කොටස තෝරා අධ්‍යයනය කරන්න:</p>
+                
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:12px; margin-top:15px;">
+                    <button class="btn btn-green" onclick="showPDFSection()">📄 PDF සටහන් (Notes)</button>
+                    <button class="btn" onclick="startExam()">📝 MCQ ප්‍රශ්න පත්‍ර</button>
+                    <button class="btn btn-secondary" style="border-color:var(--secondary-color); color:#fff;" onclick="showEssaySection()">✍️ රචනා ප්‍රශ්න (Essay)</button>
+                </div>
+            </div>
+
+            <button class="btn btn-secondary" onclick="logoutStudent()" style="margin-top:20px;">Logout</button>
+        </div>
+
+        <!-- 3. PDF Notes Section -->
+        <div class="card" id="pdf-section">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                <h2>📄 PDF සටහන් (Lesson Tutes)</h2>
+                <button class="btn-action btn-unblock" onclick="backToDashboard()">🔙 Back to Hub</button>
+            </div>
+            
+            <div class="question-block">
+                <h4>📘 පාඩම 01 - ජනමාධ්‍ය හඳුන්වාදීම</h4>
+                <p style="font-size:0.85rem; color:var(--text-sub); margin:5px 0;">සන්නිවේදනයේ මූලික සංකල්ප සහ මාධ්‍ය පරිණාමය පිළිබඳ සටහන.</p>
+                <a href="#" target="_blank"><button class="btn btn-secondary" style="padding:6px; font-size:0.85rem; margin-top:5px;">Download PDF Tute</button></a>
+            </div>
+
+            <div class="question-block">
+                <h4>📘 පාඩම 02 - මාධ්‍ය සාක්ෂරතාවය</h4>
+                <p style="font-size:0.85rem; color:var(--text-sub); margin:5px 0;">මාධ්‍ය පණිවුඩ විශ්ලේෂණය සහ විවේචනාත්මක අධ්‍යයනය.</p>
+                <a href="#" target="_blank"><button class="btn btn-secondary" style="padding:6px; font-size:0.85rem; margin-top:5px;">Download PDF Tute</button></a>
+            </div>
+        </div>
+
+        <!-- 4. MCQ Exam Interface -->
+        <div class="card" id="exam-section">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                <h2>📝 MCQ ප්‍රශ්න පත්‍රය (Model Paper)</h2>
+                <div class="timer-box" style="margin:0;">⏱️ ඉතිරි කාලය: <span id="timer-display">60:00</span></div>
+            </div>
+
+            <form id="mcq-form">
+                <div class="question-block">
+                    <p><strong>1. ශ්‍රී ලංකාවේ ප්‍රථම ගුවන්විදුලි විකාශනය ආරම්භ වූ වර්ෂය කුමක්ද?</strong></p>
+                    <label><input type="radio" name="q1" value="A"> A) 1925</label>
+                    <label><input type="radio" name="q1" value="B"> B) 1948</label>
+                    <label><input type="radio" name="q1" value="C"> C) 1979</label>
+                </div>
+
+                <div class="question-block">
+                    <p><strong>2. මාධ්‍ය සාක්ෂරතාවය යනු කුමක්ද?</strong></p>
+                    <label><input type="radio" name="q2" value="A"> A) මාධ්‍ය තාක්ෂණය ගැන පමණක් දැනගැනීම</label>
+                    <label><input type="radio" name="q2" value="B"> B) මාධ්‍ය පණිවුඩ විවේචනාත්මකව විශ්ලේෂණය කිරීමේ හැකියාව</label>
+                </div>
+
+                <div style="display:flex; gap:10px;">
+                    <button type="button" class="btn btn-green" onclick="submitExam()">Exam එක Submit කරන්න</button>
+                    <button type="button" class="btn btn-secondary" onclick="backToDashboard()">Cancel</button>
+                </div>
+            </form>
+            <div id="exam-result" style="margin-top:15px; font-weight:bold; font-size:1.1rem;"></div>
+        </div>
+
+        <!-- 5. Essay Questions Section -->
+        <div class="card" id="essay-section">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                <h2>✍ රචනා ප්‍රශ්න (Essay Questions)</h2>
+                <button class="btn-action btn-unblock" onclick="backToDashboard()">🔙 Back to Hub</button>
+            </div>
+
+            <div class="question-block">
+                <p><strong>ප්‍රශ්නය 01:</strong></p>
+                <p style="font-size:0.9rem; margin-top:5px;">"නූතන සමාජය තුළ ජනමාධ්‍ය මගින් සිදුකරනු ලබන බලපෑම ධනාත්මක හා ඍණාත්මක ලෙස විවේචනාත්මකව අගයන්න." (ලකුණු 20)</p>
+            </div>
+
+            <div class="question-block">
+                <p><strong>ප්‍රශ්නය 02:</strong></p>
+                <p style="font-size:0.9rem; margin-top:5px;">"සමාජ මාධ්‍ය (Social Media) භාවිතයේදී මාධ්‍ය සාක්ෂරතාවයේ වැදගත්කම උදාහරණ සහිතව පැහැදිලි කරන්න." (ලකුණු 20)</p>
+            </div>
+
+            <div class="input-group" style="margin-top:15px;">
+                <label>ඔබ පිළිතුරු ලියූ ඡායාරූප (Answer Sheets) Upload කරන්න:</label>
+                <input type="file" id="essay-upload" accept="image/*,.pdf">
+                <button class="btn" style="padding:8px; margin-top:8px;" onclick="alert('පිළිතුරු පත්‍රය සාර්ථකව Upload විය. ගුරුතුමා පරීක්ෂා කර ලකුණු ලබා දෙනු ඇත.')">Upload Answers</button>
+            </div>
+        </div>
+
+        <!-- 6. Admin Dashboard View -->
+        <div class="card" id="admin-section">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <h2>👨‍‍🏫 Admin Panel</h2>
+                <button class="btn" style="width: auto; padding: 6px 15px; margin: 0;" onclick="showStudentLogin()">Logout Admin</button>
+            </div>
+
+            <!-- Control Center -->
+            <div style="background: #0f172a; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid var(--border-color);">
+                <h4 style="color:#f1c40f;">📢 Control Center</h4>
+                <div class="input-group" style="margin-top:10px;">
+                    <label>Notice Board වෙනස් කරන්න:</label>
+                    <textarea id="notice-input" rows="2"></textarea>
+                    <button class="btn" style="padding:6px; font-size:0.85rem;" onclick="saveNotice()">Notice එක Publish කරන්න</button>
+                </div>
+                <div class="input-group">
+                    <label>මෙවර Zoom Class Link එක එකතු කරන්න:</label>
+                    <input type="text" id="zoom-input" placeholder="https://zoom.us/j/123456789">
+                    <button class="btn btn-green" style="padding:6px; font-size:0.85rem;" onclick="saveZoomLink()">Zoom Link එක Update කරන්න</button>
+                </div>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <h4>📊 Registered Students Management</h4>
+                <button class="btn btn-green" style="width:auto; padding:8px 15px;" onclick="downloadCSV()">📥 Export Excel (CSV)</button>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Student ID</th>
+                            <th>WhatsApp Phone</th>
+                            <th>Trial Status</th>
+                            <th>Manual Block</th>
+                            <th>Full Access Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="logs-table-body"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; Online A/L Media Academy. All Rights Reserved.
+    </div>
+
+    <script>
+        const BANK_ACCOUNT_NO = "8003879999";
+        const FEE_AMOUNT = "500";
+
+        let studentDB = JSON.parse(localStorage.getItem('mediaAcademyStudents')) || {};
+        let blockedUsers = JSON.parse(localStorage.getItem('mediaAcademyBlocked')) || [];
+        let usedRefs = JSON.parse(localStorage.getItem('mediaAcademyUsedRefs')) || [];
+        let currentNotice = localStorage.getItem('mediaAcademyNotice') || "ඊළඟ පන්තිය පිළිබඳ තොරතුරු පහතින් පළ කෙරේ.";
+        let currentZoom = localStorage.getItem('mediaAcademyZoom') || "#";
+        let currentLoggedInUser = "";
+        let examTimer;
+
+        function switchTab(tab) {
+            if(tab === 'register') {
+                document.getElementById('register-section').style.display = 'block';
+                document.getElementById('login-section').style.display = 'none';
+                document.getElementById('tab-reg-btn').classList.add('active');
+                document.getElementById('tab-login-btn').classList.remove('active');
+            } else {
+                document.getElementById('register-section').style.display = 'none';
+                document.getElementById('login-section').style.display = 'block';
+                document.getElementById('tab-login-btn').classList.add('active');
+                document.getElementById('tab-reg-btn').classList.remove('active');
+            }
+        }
+
+        function toggleRegButton() {
+            const isChecked = document.getElementById('agree-check-reg').checked;
+            document.getElementById('reg-submit-btn').disabled = !isChecked;
+        }
+
+        function getDeviceFingerprint() {
+            return navigator.userAgent + "|" + screen.width + "x" + screen.height;
+        }
+
+        // Student Direct Registration & Instant Direct to WhatsApp
+        document.getElementById('register-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('reg-name').value.trim();
+            let phone = document.getElementById('reg-phone').value.trim();
+
+            if(!name || !phone) {
+                alert("කරුණාකර සියලු විස්තර ඇතුළත් කරන්න!");
+                return;
+            }
+
+            // Auto-Generate Student ID & Random Password
+            const studentCount = Object.keys(studentDB).length + 101;
+            const newStudentId = "MED" + studentCount;
+
+            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            let randPw = "";
+            for (let i = 0; i < 6; i++) {
+                randPw += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+
+            // Save to DB
+            studentDB[newStudentId] = {
+                name: name,
+                phone: phone,
+                password: randPw,
+                firstLogin: new Date().getTime(),
+                deviceId: null,
+                isPaid: false,
+                passwordChanged: false
+            };
+            localStorage.setItem('mediaAcademyStudents', JSON.stringify(studentDB));
+
+            // Format Sri Lankan Phone for WhatsApp API
+            let formattedPhone = phone;
+            if (formattedPhone.startsWith("0")) {
+                formattedPhone = "94" + formattedPhone.substring(1);
+            }
+
+            const msg = `ආයුබෝවන් ${name}!🎓\nOnline A/L Media Academy වෙත ඔබ සාදරයෙන් පිළිගනිමු.\n\nඔබගේ Login Details පහත දැක්වේ:\n🆔 Student ID: ${newStudentId}\n🔑 Password: ${randPw}\n\nමෙම තොරතුරු යොදා වෙබ් අඩවියට ලොග් වී ඔබගේ නව Password එකක් සකසා ගන්න.`;
+            const waUrl = `https://wa.me/${formattedPhone}?text=${encodeURIComponent(msg)}`;
+
+            // Direct Redirect to WhatsApp
+            window.location.href = waUrl;
+        });
+
+        // Student Login Handler
+        document.getElementById('student-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const studentId = document.getElementById('student-id').value.trim();
+            const password = document.getElementById('student-pass').value.trim();
+            const now = new Date().getTime();
+            const currentDevice = getDeviceFingerprint();
+
+            if (blockedUsers.includes(studentId)) {
+                alert("🛑 ඔබගේ ගිණුම Block කර ඇත. කරුණාකර ගුරුතුමා අමතන්න (0742241435).");
+                return;
+            }
+
+            if (!studentDB[studentId]) {
+                alert("❌ මෙවැනි Student ID එකක් හමු නොවුණි! ප්‍රථමයෙන් Register වන්න.");
+                return;
+            }
+
+            const student = studentDB[studentId];
+
+            if (student.password !== password) {
+                alert("❌ ඇතුළත් කළ Password එක වැරදියි!");
+                return;
+            }
+
+            if (!student.deviceId) {
+                student.deviceId = currentDevice;
+            } else if (student.deviceId !== currentDevice) {
+                alert("🛑 මෙම ගිණුම වෙනත් Phone/Computer එකකට සම්බන්ධ කර ඇත! වෙනත් Device වලින් එකවර Log විය නොහැක.");
+                return;
+            }
+
+            currentLoggedInUser = studentId;
+
+            if (!student.passwordChanged) {
+                hideAllSections();
+                document.getElementById('password-change-card').style.display = 'block';
+                return;
+            }
+
+            const hoursPassed = (now - student.firstLogin) / (1000 * 60 * 60);
+
+            if (!student.isPaid && hoursPassed > 48) {
+                alert("🛑 ඔබගේ නොමිලේ ලබා දුන් පැය 48 (Free Trial) කාල සීමාව අවසන් වී ඇත! රු. 500 තැන්පත් කර Commercial Bank Slip එක Upload කරන්න.");
+                return;
+            }
+
+            loadStudentPortal(student, hoursPassed);
+        });
+
+        document.getElementById('pw-change-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const newPw = document.getElementById('new-pw').value;
+            const confirmPw = document.getElementById('confirm-pw').value;
+
+            if (newPw !== confirmPw) {
+                alert("❌ Passwords දෙක සමාන නොවේ!");
+                return;
+            }
+
+            studentDB[currentLoggedInUser].password = newPw;
+            studentDB[currentLoggedInUser].passwordChanged = true;
+            localStorage.setItem('mediaAcademyStudents', JSON.stringify(studentDB));
+
+            alert("✅ ඔබගේ Password එක සාර්ථකව වෙනස් විය!");
+            const hoursPassed = (new Date().getTime() - studentDB[currentLoggedInUser].firstLogin) / (1000 * 60 * 60);
+            loadStudentPortal(studentDB[currentLoggedInUser], hoursPassed);
+        });
+
+        function loadStudentPortal(student, hoursPassed) {
+            hideAllSections();
+            document.getElementById('student-portal').style.display = 'block';
+            document.getElementById('logged-user-name').innerText = student.name || "Student";
+            document.getElementById('logged-user-id').innerText = currentLoggedInUser;
+            document.getElementById('display-notice').innerText = currentNotice;
+            document.getElementById('zoom-link-btn').href = currentZoom;
+            updateTrialStatus(student, hoursPassed);
+        }
+
+        function updateTrialStatus(student, hoursPassed) {
+            const statusBar = document.getElementById('trial-status-bar');
+            if (student.isPaid) {
+                statusBar.innerText = "✅ Full Access Granted (රු. 500 පන්ති ගාස්තු ගෙවා ඇත)";
+                statusBar.style.color = "#2ec4b6";
+            } else {
+                const remainingHours = Math.max(0, Math.floor(48 - hoursPassed));
+                statusBar.innerText = `⏱ Free Trial Access: ඉතිරි කාලය පැය ${remainingHours}`;
+                statusBar.style.color = "#f1c40f";
+            }
+        }
+
+        async function uploadSlipAuto() {
+            const fileInput = document.getElementById('slip-file');
+            const statusDiv = document.getElementById('ocr-status');
+
+            if (fileInput.files.length === 0) {
+                statusDiv.style.color = "#e63946";
+                statusDiv.innerText = "❌ කරුණාකර Bank Slip එකෙහි Image එකක් තෝරන්න!";
+                return;
+            }
+
+            statusDiv.style.color = "#f1c40f";
+            statusDiv.innerText = "⏳ Slip එක පරීක්ෂා කරමින් පවතී... (තත්පර 3-5ක් රැඳී සිටින්න)";
+
+            const formData = new FormData();
+            formData.append("file", fileInput.files[0]);
+            formData.append("apikey", "helloworld");
+            formData.append("language", "eng");
+            formData.append("OCREngine", "2");
+
+            try {
+                let response = await fetch("https://api.ocr.space/parse/image", { method: "POST", body: formData });
+                let result = await response.json();
+
+                if (result.ParsedResults && result.ParsedResults.length > 0) {
+                    let text = result.ParsedResults[0].ParsedText;
+                    let cleanText = text.replace(/\s+/g, '');
+
+                    let hasAcc = text.includes(BANK_ACCOUNT_NO) || cleanText.includes(BANK_ACCOUNT_NO);
+                    let hasAmount = text.includes(FEE_AMOUNT) || text.includes("500.00");
+
+                    let refMatch = text.match(/\b\d{6,12}\b/);
+                    let refNo = refMatch ? refMatch[0] : null;
+
+                    if (refNo && usedRefs.includes(refNo)) {
+                        statusDiv.style.color = "#e63946";
+                        statusDiv.innerText = "❌ මෙම Bank Slip එක මීට පෙර භාවිතා කර ඇත!";
+                        return;
+                    }
+
+                    if (hasAcc && hasAmount) {
+                        if (refNo) usedRefs.push(refNo);
+                        localStorage.setItem('mediaAcademyUsedRefs', JSON.stringify(usedRefs));
+
+                        studentDB[currentLoggedInUser].isPaid = true;
+                        localStorage.setItem('mediaAcademyStudents', JSON.stringify(studentDB));
+
+                        statusDiv.style.color = "#2ec4b6";
+                        statusDiv.innerText = "✅ Commercial Bank Slip එක සාර්ථකව Confirm විය! Full Access සක්‍රියයි.";
+                        updateTrialStatus(studentDB[currentLoggedInUser], 0);
+                    } else {
+                        statusDiv.style.color = "#e63946";
+                        statusDiv.innerText = "❌ Slip එකෙහි ගිණුම් අංකය (8003879999) හෝ මුදල (Rs. 500) හඳුනාගත නොහැකි විය.";
+                    }
+                } else {
+                    statusDiv.style.color = "#e63946";
+                    statusDiv.innerText = "❌ Slip එක කියවීමට නොහැකි විය. පැහැදිලි Photo එකක් Upload කරන්න.";
+                }
+            } catch (err) {
+                statusDiv.style.color = "#e63946";
+                statusDiv.innerText = "❌ Verification වල දෝෂයක් සිදුවිය.";
+            }
+        }
+
+        function showPDFSection() { hideAllSections(); document.getElementById('pdf-section').style.display = 'block'; }
+        function showEssaySection() { hideAllSections(); document.getElementById('essay-section').style.display = 'block'; }
+
+        function startExam() {
+            hideAllSections();
+            document.getElementById('exam-section').style.display = 'block';
+            let timeLeft = 3600;
+            examTimer = setInterval(() => {
+                let minutes = Math.floor(timeLeft / 60);
+                let seconds = timeLeft % 60;
+                document.getElementById('timer-display').innerText = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                if (timeLeft <= 0) { clearInterval(examTimer); submitExam(); }
+                timeLeft--;
+            }, 1000);
+        }
+
+        function backToDashboard() {
+            hideAllSections();
+            document.getElementById('student-portal').style.display = 'block';
+            if (examTimer) clearInterval(examTimer);
+        }
+
+        function hideAllSections() {
+            document.getElementById('student-login-card').style.display = 'none';
+            document.getElementById('password-change-card').style.display = 'none';
+            document.getElementById('student-portal').style.display = 'none';
+            document.getElementById('pdf-section').style.display = 'none';
+            document.getElementById('exam-section').style.display = 'none';
+            document.getElementById('essay-section').style.display = 'none';
+            document.getElementById('admin-section').style.display = 'none';
+        }
+
+        function submitExam() {
+            clearInterval(examTimer);
+            let score = 0;
+            const q1 = document.querySelector('input[name="q1"]:checked');
+            const q2 = document.querySelector('input[name="q2"]:checked');
+            if (q1 && q1.value === "A") score += 50;
+            if (q2 && q2.value === "B") score += 50;
+            document.getElementById('exam-result').innerText = `✅ Exam එක අවසන්! ඔබගේ ලකුණු ප්‍රමාණය: ${score}/100`;
+        }
+
+        function logoutStudent() { hideAllSections(); document.getElementById('student-login-card').style.display = 'block'; }
+
+        function showAdminAuth() {
+            const pass = prompt("Admin Passcode ඇතුළත් කරන්න (Default: 1234):");
+            if (pass === "1234") {
+                hideAllSections();
+                document.getElementById('admin-section').style.display = 'block';
+                document.getElementById('notice-input').value = currentNotice;
+                document.getElementById('zoom-input').value = currentZoom;
+                renderLogs();
+            } else if(pass !== null) alert("වැරදි Passcode එකක්!");
+        }
+
+        function showStudentLogin() { hideAllSections(); document.getElementById('student-login-card').style.display = 'block'; }
+
+        function saveNotice() {
+            currentNotice = document.getElementById('notice-input').value.trim();
+            localStorage.setItem('mediaAcademyNotice', currentNotice);
+            alert("📢 Notice එක Update විය!");
+        }
+
+        function saveZoomLink() {
+            currentZoom = document.getElementById('zoom-input').value.trim();
+            localStorage.setItem('mediaAcademyZoom', currentZoom);
+            alert("🎥 Zoom Link එක Update විය!");
+        }
+
+        function toggleBlockUser(studentId) {
+            if (blockedUsers.includes(studentId)) {
+                blockedUsers = blockedUsers.filter(id => id !== studentId);
+            } else {
+                blockedUsers.push(studentId);
+            }
+            localStorage.setItem('mediaAcademyBlocked', JSON.stringify(blockedUsers));
+            renderLogs();
+        }
+
+        function togglePaidUser(studentId) {
+            if (studentDB[studentId]) {
+                studentDB[studentId].isPaid = !studentDB[studentId].isPaid;
+                localStorage.setItem('mediaAcademyStudents', JSON.stringify(studentDB));
+                renderLogs();
+            }
+        }
+
+        function renderLogs() {
+            const tbody = document.getElementById('logs-table-body');
+            tbody.innerHTML = '';
+
+            const keys = Object.keys(studentDB);
+            if(keys.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;">තවම සිසුන් කිසිවෙකු ලියාපදිංචි වී නැත.</td></tr>';
+                return;
+            }
+
+            keys.forEach(id => {
+                const s = studentDB[id];
+                const now = new Date().getTime();
+                const hoursPassed = (now - s.firstLogin) / (1000 * 60 * 60);
+                const isBlocked = blockedUsers.includes(id);
+
+                let trialText = "";
+                if(s.isPaid) trialText = '<span style="color:#2ec4b6;">Paid Member (Rs.500)</span>';
+                else if(hoursPassed > 48) trialText = '<span style="color:#e63946;">Expired (48h Over)</span>';
+                else trialText = `<span style="color:#f1c40f;">Active (${Math.floor(48 - hoursPassed)}h left)</span>`;
+
+                const row = `<tr>
+                    <td><strong>${s.name || 'N/A'}</strong></td>
+                    <td>${id}</td>
+                    <td>${s.phone || 'N/A'}</td>
+                    <td>${trialText}</td>
+                    <td><button class="btn-action ${isBlocked ? 'btn-unblock' : 'btn-block'}" onclick="toggleBlockUser('${id}')">${isBlocked ? 'Unblock' : 'Block'}</button></td>
+                    <td><button class="btn-action btn-unblock" onclick="togglePaidUser('${id}')">${s.isPaid ? 'Revoke Access' : 'Approve Full Access'}</button></td>
+                </tr>`;
+                tbody.innerHTML += row;
+            });
+        }
+
+        function downloadCSV() {
+            let csv = 'Student Name,Student ID,Phone,Paid Member,Manual Blocked\n';
+            Object.keys(studentDB).forEach(id => {
+                const s = studentDB[id];
+                const isBlocked = blockedUsers.includes(id);
+                csv += `"${s.name || ''}",${id},${s.phone || ''},${s.isPaid},${isBlocked}\n`;
+            });
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.setAttribute('href', url);
+            a.setAttribute('download', 'Registered_Students_Report.csv');
+            a.click();
+        }
+    </script>
+</body>
+</html>
